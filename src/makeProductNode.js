@@ -20,7 +20,7 @@ const makeProductNode = data => {
     'price': price => ({
       rawPrice: price.raw,
       currency: price.formatted_with_code.substring(price.formatted.length + 1),
-      formatted: price.formatted_with_symbol,
+      formattedPrice: price.formatted_with_symbol,
     }),
   };
 
