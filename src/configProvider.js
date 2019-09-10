@@ -15,29 +15,51 @@ export const defaultConfig = {
       },
     ],
   },
+  pages: [],
+  typeNames: {
+    products: 'ChecProduct'
+  }
 };
 
 const resolveConfig = existingConfig => {
-  const { resolvableFields: defaultResolvableFields, ...otherDefaults } = defaultConfig;
+  const {
+    resolvableFields: defaultResolvableFields,
+    pages: defaultPages,
+    typeNames: defaultTypeNames,
+    ...otherDefaults
+  } = defaultConfig;
 
   const config = {
     ...otherDefaults,
     ...existingConfig,
   };
 
-  if (!existingConfig.hasOwnProperty('resolvableFields')) {
-    return {
-      ...config,
-      ...defaultResolvableFields,
+  let resolvableFields = defaultResolvableFields;
+  if (existingConfig.hasOwnProperty('resolvableFields')) {
+    resolvableFields = {
+      ...resolvableFields,
+      ...existingConfig.resolvableFields,
+    };
+  }
+
+  let pages = defaultPages;
+  if (existingConfig.hasOwnProperty('pages')) {
+    pages = existingConfig.pages;
+  }
+
+  let typeNames = defaultTypeNames;
+  if (existingConfig.hasOwnProperty('typeNames')) {
+    typeNames = {
+      ...typeNames,
+      ...existingConfig.typeNames,
     };
   }
 
   return {
     ...config,
-    resolvableFields: {
-      ...defaultResolvableFields,
-      ...existingConfig.resolvableFields,
-    },
+    resolvableFields,
+    pages,
+    typeNames,
   };
 };
 

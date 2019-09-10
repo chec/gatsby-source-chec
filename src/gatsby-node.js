@@ -17,19 +17,19 @@ exports.onPreBootstrap = ({ reporter }, options) => {
 };
 
 exports.sourceNodes = async ({ actions }, options ) => {
-  const { url } = resolveConfig(options);
+  const { url, typeNames } = resolveConfig(options);
   const { createNode } = actions;
 
   const { data: { data: products } } = await axios.get(`${url}products`, { headers: { 'X-Authorization': options.token } });
 
   products.forEach(product => {
-    createNode(makeProductNode(product));
+    createNode(makeProductNode(product, typeNames.products));
   });
 };
 
 // Find fields that are references to a Chec product and link them
 exports.onCreateNode = async ({ node, actions, getNodesByType }, options) => {
-  const { resolvableFields, resolvableNodeWhitelist } = resolveConfig(options);
+  const { resolvableFields, resolvableNodeWhitelist, typeNames } = resolveConfig(options);
   const { internal: { type }} = node;
   const { createNodeField } = actions;
 
@@ -40,11 +40,9 @@ exports.onCreateNode = async ({ node, actions, getNodesByType }, options) => {
 
   // Loop the various nodes and create linkages if found on the current node
   // Products:
-  const existingNodes = await getNodesByType('ChecProduct');
+  const existingNodes = await getNodesByType(typeNames.products);
 
   resolvableFields.products.forEach(({ field, type, name }) => {
-    debugger;
-
     if (!node.hasOwnProperty(field)) {
       return;
     }
@@ -59,7 +57,6 @@ exports.onCreateNode = async ({ node, actions, getNodesByType }, options) => {
         case 'id':
           return id === matchedIdentifier;
         case 'permalink':
-
           return permalink === matchedIdentifier || permalink === matchedIdentifier.split('/').pop();
       }
 
@@ -77,4 +74,51 @@ exports.onCreateNode = async ({ node, actions, getNodesByType }, options) => {
       value: matchedNode.id
     });
   });
+};
+
+const defaultQueryFields = {
+  products: ['id', 'permalink', 'name'],
+};
+
+exports.createPages = async ({ graphql, actions, reporter }, options) => {
+  const { typeNames, pages } = resolveConfig(options);
+  const { createPage } = actions;
+
+  // Loop keys in page config...
+  const promises = pages.map(async ({type, componentPath, segment, fields, slugCreator}) => {
+    if (!typeNames.hasOwnProperty(type)) {
+      console.log(`Cannot find a Chec type matching "${type}. Skipping`);
+      return;
+    }
+
+    const queryType = `all${typeNames[type]}`;
+    const result = await graphql(`
+      {
+        ${queryType}(limit: 1000) {
+          edges {
+            node {
+             ${fields || defaultQueryFields[type]}
+            }
+          }
+        }
+      }
+    `);
+
+    const promises = result.data[queryType].edges.map(async ({ node: item }) => {
+      const slug = slugCreator
+        ? slugCreator(item)
+        : item.permalink;
+      const path = `${segment}/${slug}`;
+
+      await createPage({
+        path,
+        component: componentPath,
+        context: {
+          ...item
+        }
+      });
+    });
+  });
+
+  await Promise.all(promises);
 };

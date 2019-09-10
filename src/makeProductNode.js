@@ -7,7 +7,7 @@ const digest = str =>
     .update(str)
     .digest(`hex`);
 
-const makeProductNode = data => {
+const makeProductNode = (data, typeName) => {
   // Mark attributes to skip on the response
   const attributeBlacklist = ['is', 'has', 'collects', 'media'];
 
@@ -55,7 +55,7 @@ const makeProductNode = data => {
   return {
     ...entry,
     internal: {
-      type: 'ChecProduct',
+      type: typeName,
       contentDigest: digest(`${entry.id}|${entry.lastUpdated}`),
     }
   };
