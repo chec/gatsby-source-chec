@@ -1,0 +1,17 @@
+{
+  "name": "gatsby-source-chec",
+  "version": "0.1.0",
+  "description": "Source Chec commerce data for your Gatsby store.",
+  "main": "index.js",
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "chec",
+    "ecommerce"
+  ],
+  "dependencies": {
+    "chec-request": "0.1.0",
+    "gatsby-source-filesystem": "2.2.2"
+  }
+}

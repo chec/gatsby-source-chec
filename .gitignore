@@ -1,5 +1,9 @@
-/node_modules
-/__tests__
-/*.js
-!index.js
-tags
+node_modules
+public
+.cache
+.env
+.DS_Store
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
