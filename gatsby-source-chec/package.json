@@ -4,11 +4,17 @@
   "description": "Source Chec commerce data for your Gatsby store.",
   "main": "index.js",
   "license": "MIT",
+  "author": "Chec (https://chec.io)",
+  "contributors": [
+    "Jamie Barton",
+    "Guy Marriott"
+  ],
   "keywords": [
     "gatsby",
     "gatsby-plugin",
     "chec",
-    "ecommerce"
+    "ecommerce",
+    "commercejs"
   ],
   "dependencies": {
     "chec-request": "0.1.0",
