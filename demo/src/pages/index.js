@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 
 const pageQuery = graphql`
   {
@@ -9,8 +9,8 @@ const pageQuery = graphql`
 
     products: allChecProduct {
       nodes {
-        id
         name
+        permalink
         price {
           formatted_with_symbol
         }
@@ -30,8 +30,10 @@ const IndexPage = () => {
 
       <ul>
         {products.nodes.map(product => (
-          <li key={product.id}>
-            {product.name}: {product.price.formatted_with_symbol}
+          <li key={product.permalink}>
+            <Link to={`/products/${product.permalink}`}>
+              {product.name}: {product.price.formatted_with_symbol}
+            </Link>
           </li>
         ))}
       </ul>

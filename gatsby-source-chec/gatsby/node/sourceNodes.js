@@ -14,10 +14,10 @@ const sourceNodes = async (
   const commerce = new Chec(token);
 
   const { id: merchantId, ...merchant } = await commerce.get('merchants');
-  const { data: products } = await commerce.get('products');
   const { data: categories } = await commerce.get('categories');
+  const { data: products } = await commerce.get('products');
 
-  await createNode({
+  createNode({
     id: merchantId.toString(),
     ...merchant,
     internal: {
@@ -26,17 +26,6 @@ const sourceNodes = async (
       contentDigest: createContentDigest(merchant),
     },
   });
-
-  products.forEach(product =>
-    createNode({
-      ...product,
-      internal: {
-        type: `ChecProduct`,
-        content: JSON.stringify(product),
-        contentDigest: createContentDigest(product),
-      },
-    })
-  );
 
   categories.forEach(category =>
     createNode({
@@ -48,6 +37,17 @@ const sourceNodes = async (
       },
     })
   );
+
+  products.forEach(product => {
+    createNode({
+      ...product,
+      internal: {
+        type: `ChecProduct`,
+        content: JSON.stringify(product),
+        contentDigest: createContentDigest(product),
+      },
+    });
+  });
 };
 
 module.exports = sourceNodes;
