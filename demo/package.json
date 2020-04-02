@@ -1,0 +1,19 @@
+{
+  "name": "demo",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "dev": "gatsby develop"
+  },
+  "devDependencies": {
+    "dotenv": "8.2.0"
+  },
+  "dependencies": {
+    "gatsby": "2.20.8",
+    "gatsby-source-chec": "*",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
+}

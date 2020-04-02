@@ -1,23 +1,12 @@
 {
-  "name": "gatsby-source-chec",
-  "version": "0.0.1",
-  "description": "Gatsby plugin to pull data from your Chec store",
-  "main": "index.js",
-  "author": "ScopeyNZ (Guy Marriott)",
-  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "demo",
+    "gatsby-source-chec"
+  ],
   "scripts": {
-    "build": "babel src -d .",
-    "dev": "babel src -wd ."
-  },
-  "dependencies": {
-    "@hapi/joi": "^15.1.1",
-    "axios": "^0.19.0",
-    "camelcase": "^5.3.1",
-    "chalk": "^2.4.2"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5"
+    "build": "yarn workspace demo build",
+    "clean": "yarn workspace demo clean",
+    "dev": "yarn workspace demo dev"
   }
 }
