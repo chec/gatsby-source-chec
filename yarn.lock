@@ -2380,10 +2380,10 @@ charenc@~0.0.1:
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
   integrity sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=
 
-chec-request@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/chec-request/-/chec-request-0.1.0.tgz#afce88dc3bfc96ee6e57d0a1ab0833baac5c38e1"
-  integrity sha512-NyCRXjOf65UDqCYm+pvrn46VagQaKTF4JxmcueE21P3CXFoWTs5Yr2jmjvgK8n31z7szEMRARVi9ApfoQH3ZMQ==
+chec-request@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/chec-request/-/chec-request-1.0.0.tgz#6141a59f4e64fdbc3c495d7b0ed3090d9d713077"
+  integrity sha512-HlzM2CfSJ1BnnMz7cBLjz135MnME6cVXx0p4jSSiUGMtxsTqiKWyq8Hbhs8PlMw6lo3IkX2N95fFDPu64PEa/w==
   dependencies:
     cross-fetch "3.0.4"
 

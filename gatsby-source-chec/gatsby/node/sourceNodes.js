@@ -13,9 +13,36 @@ const sourceNodes = async (
 
   const commerce = new Chec(token);
 
+  const fetchAllPages = async (endpoint, collection = [], page = undefined) => {
+    try {
+      const { data = [], meta } = await commerce.get(endpoint, {
+        ...(page && { page }),
+      });
+
+      if (data.length === 0) return data;
+
+      const {
+        pagination: {
+          current_page,
+          links: { next },
+        },
+      } = meta;
+
+      const newCollection = [...data, ...collection];
+
+      if (next) {
+        await fetchAllPages(endpoint, newCollection, current_page + 1);
+      }
+
+      return newCollection;
+    } catch (err) {
+      reporter.panicOnBuild('gatsby-source-chec', err);
+    }
+  };
+
   const { id: merchantId, ...merchant } = await commerce.get('merchants');
-  const { data: categories } = await commerce.get('categories');
-  const { data: products } = await commerce.get('products');
+  const categories = await fetchAllPages('categories');
+  const products = await fetchAllPages('products');
 
   createNode({
     id: merchantId.toString(),
@@ -27,7 +54,7 @@ const sourceNodes = async (
     },
   });
 
-  categories.forEach(category =>
+  categories.forEach((category) =>
     createNode({
       ...category,
       internal: {
@@ -38,7 +65,7 @@ const sourceNodes = async (
     })
   );
 
-  products.forEach(product => {
+  products.forEach((product) => {
     createNode({
       ...product,
       internal: {
