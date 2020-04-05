@@ -2,16 +2,16 @@ const { Chec } = require('chec-request');
 
 const sourceNodes = async (
   { actions, createContentDigest, reporter },
-  { token }
+  { publicKey }
 ) => {
-  if (!token)
+  if (!publicKey)
     return reporter.panicOnBuild(
-      'gatsby-source-chec: You must provide a token for your Chec store'
+      `gatsby-source-chec: You must provide a 'publicKey' for your Chec store`
     );
 
   const { createNode } = actions;
 
-  const commerce = new Chec(token);
+  const commerce = new Chec(publicKey);
 
   const fetchAllPages = async (endpoint, collection = [], page = undefined) => {
     try {

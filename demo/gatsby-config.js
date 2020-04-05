@@ -5,7 +5,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-chec',
       options: {
-        token: process.env.CHEC_PUBLIC_KEY,
+        publicKey: process.env.CHEC_PUBLIC_KEY,
       },
     },
   ],
