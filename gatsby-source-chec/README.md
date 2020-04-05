@@ -16,7 +16,7 @@ plugins: [
   {
     resolve: `gatsby-source-chec`,
     options: {
-      token: '...',
+      publicKey: '...',
     },
   },
 ];
