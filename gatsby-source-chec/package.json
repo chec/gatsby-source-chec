@@ -1,10 +1,10 @@
 {
-  "name": "gatsby-source-chec",
+  "name": "@chec/gatsby-source-chec",
   "version": "0.1.0",
   "description": "Source Chec commerce data for your Gatsby store.",
   "main": "index.js",
-  "license": "MIT",
-  "author": "Chec (https://chec.io)",
+  "license": "BSD-3-Clause",
+  "author": "Chec Platform Inc (https://chec.io)",
   "contributors": [
     "Jamie Barton",
     "Guy Marriott"
@@ -16,6 +16,10 @@
     "ecommerce",
     "commercejs"
   ],
+  "repository": "chec/gatsby-source-chec",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "chec-request": "1.0.0",
     "gatsby-source-filesystem": "2.2.2"

@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "gatsby": "2.20.8",
-    "gatsby-source-chec": "*",
+    "@chec/gatsby-source-chec": "*",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   }
