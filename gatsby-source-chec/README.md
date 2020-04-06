@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-yarn add gatsby-source-chec
+yarn add @chec/gatsby-source-chec # npm install @chec/gatsby-source-chec
 ```
 
 ## Config
@@ -14,7 +14,7 @@ yarn add gatsby-source-chec
 // In your gatsby-config.js
 plugins: [
   {
-    resolve: `gatsby-source-chec`,
+    resolve: `@chec/gatsby-source-chec`,
     options: {
       publicKey: '...',
     },
