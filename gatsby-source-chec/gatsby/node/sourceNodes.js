@@ -6,7 +6,7 @@ const sourceNodes = async (
 ) => {
   if (!publicKey)
     return reporter.panicOnBuild(
-      `gatsby-source-chec: You must provide a 'publicKey' for your Chec store`
+      `@chec/gatsby-source-chec: You must provide a 'publicKey' for your Chec store`
     );
 
   const { createNode } = actions;
@@ -36,7 +36,7 @@ const sourceNodes = async (
 
       return newCollection;
     } catch (err) {
-      reporter.panicOnBuild('gatsby-source-chec', err);
+      reporter.panicOnBuild('@chec/gatsby-source-chec', err);
     }
   };
 

@@ -1,6 +1,6 @@
 {
   "name": "@chec/gatsby-source-chec",
-  "version": "0.0.0-semantic-release",
+  "version": "0.0.0",
   "description": "Source Chec commerce data for your Gatsby store.",
   "main": "index.js",
   "license": "BSD-3-Clause",

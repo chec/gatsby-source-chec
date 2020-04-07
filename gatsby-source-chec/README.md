@@ -1,4 +1,4 @@
-# gatsby-source-chec
+# @chec/gatsby-source-chec
 
 🛍 Gatsby plugin for sourcing products, categories and merchant info from your Chec store
 
