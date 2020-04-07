@@ -16,7 +16,7 @@
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "packages/gatsby-theme-chec"
+          "pkgRoot": "gatsby-source-chec"
         }
       ],
       "@semantic-release/github"
