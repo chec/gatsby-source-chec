@@ -77,9 +77,11 @@ const sourceNodes = async (
   });
 
   products.forEach(({ categories, ...product }) => {
+    const categoryIds = categories.map(({ id }) => id);
+
     createNode({
       ...product,
-      categories: categories.map(({ id }) => id),
+      categories: categoryIds,
       internal: {
         type: `ChecProduct`,
         content: JSON.stringify(product),
