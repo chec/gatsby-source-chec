@@ -54,20 +54,32 @@ const sourceNodes = async (
     },
   });
 
-  categories.forEach((category) =>
+  categories.forEach((category) => {
+    const productIds = products.reduce((ids, product) => {
+      const matchingCategory = product.categories.find(
+        (cat) => cat.id === category.id
+      );
+
+      if (!matchingCategory) return ids;
+
+      return [...ids, product.id];
+    }, []);
+
     createNode({
       ...category,
+      products: productIds,
       internal: {
         type: `ChecCategory`,
         content: JSON.stringify(category),
         contentDigest: createContentDigest(category),
       },
-    })
-  );
+    });
+  });
 
-  products.forEach((product) => {
+  products.forEach(({ categories, ...product }) => {
     createNode({
       ...product,
+      categories: categories.map(({ id }) => id),
       internal: {
         type: `ChecProduct`,
         content: JSON.stringify(product),
