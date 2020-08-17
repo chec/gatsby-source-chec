@@ -11,7 +11,7 @@
     "dotenv": "8.2.0"
   },
   "dependencies": {
-    "gatsby": "2.24.38",
+    "gatsby": "2.24.47",
     "@chec/gatsby-source-chec": "*",
     "react": "16.13.1",
     "react-dom": "16.13.1"
