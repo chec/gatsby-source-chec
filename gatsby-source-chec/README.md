@@ -17,6 +17,7 @@ plugins: [
     resolve: `@chec/gatsby-source-chec`,
     options: {
       publicKey: '...',
+      downloadLocalImages: true,
     },
   },
 ];
