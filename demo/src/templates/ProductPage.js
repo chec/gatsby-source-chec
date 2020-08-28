@@ -6,8 +6,6 @@ export default function ProductPage({ data: { product } }) {
   const { name, price, images } = product;
   const [mainImage] = images;
 
-  console.log(mainImage);
-
   return (
     <React.Fragment>
       {mainImage && (
