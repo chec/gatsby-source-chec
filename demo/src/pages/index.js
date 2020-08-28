@@ -8,14 +8,12 @@ const pageQuery = graphql`
     merchant: checMerchant {
       name: business_name
     }
-
     categories: allChecCategory {
       nodes {
         name
         slug
       }
     }
-
     products: allChecProduct {
       nodes {
         name
