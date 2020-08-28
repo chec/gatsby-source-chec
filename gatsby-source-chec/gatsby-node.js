@@ -4,10 +4,10 @@ exports.sourceNodes = require('./gatsby/node/sourceNodes');
 exports.createSchemaCustomization = require('./gatsby/node/createSchemaCustomization');
 exports.onCreateNode = async (
   { node, actions: { createNode }, createNodeId, store, cache },
-  { downloadLocalImages = false }
+  { downloadImageAssets = false }
 ) => {
   if (
-    downloadLocalImages &&
+    downloadImageAssets &&
     node.internal.type === 'ChecProduct' &&
     node.assets
   ) {
