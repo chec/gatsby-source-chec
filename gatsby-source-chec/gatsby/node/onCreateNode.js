@@ -37,7 +37,7 @@ const onCreateNode = async (
       return assetIds;
     };
 
-    node.images___NODE = await getImageAssets();
+    node.images = await getImageAssets();
   }
 };
 
