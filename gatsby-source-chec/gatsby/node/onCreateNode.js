@@ -15,10 +15,8 @@ const onCreateNode = async (
       const fetchImageAssets = node.assets.map(async (asset) => {
         if (!asset.is_image) return;
 
-        let imageNode;
-
         try {
-          imageNode = await createRemoteFileNode({
+          const imageNode = await createRemoteFileNode({
             url: encodeURI(asset.url),
             store,
             cache,
