@@ -25,11 +25,11 @@ const onCreateNode = async (
             createNode,
             createNodeId,
           });
+
+          if (imageNode) assetIds.push(imageNode.id);
         } catch (e) {
           console.error('gatsby-source-chec: ERROR', e);
         }
-
-        assetIds.push(imageNode.id);
       });
 
       await Promise.all(fetchImageAssets);
