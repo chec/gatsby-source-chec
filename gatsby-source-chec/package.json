@@ -22,6 +22,6 @@
   },
   "dependencies": {
     "chec-request": "1.0.1",
-    "gatsby-source-filesystem": "2.3.24"
+    "gatsby-source-filesystem": "2.3.27"
   }
 }
