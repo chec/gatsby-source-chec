@@ -1,9 +1,13 @@
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
 
+const withPluginOptions = require('../../plugin-options');
+
 const onCreateNode = async (
   { node, actions: { createNode }, createNodeId, store, cache },
-  { downloadImageAssets = false }
+  pluginOptions
 ) => {
+  const { downloadImageAssets } = withPluginOptions(pluginOptions);
+
   if (
     downloadImageAssets &&
     node.internal.type === 'ChecProduct' &&
@@ -12,7 +16,7 @@ const onCreateNode = async (
     const getImageAssets = async () => {
       const assetIds = [];
 
-      const fetchImageAssets = node.assets.map(async (asset) => {
+      const processImageAssets = node.assets.map(async (asset) => {
         if (!asset.is_image) return;
 
         try {
@@ -22,6 +26,7 @@ const onCreateNode = async (
             cache,
             createNode,
             createNodeId,
+            parentNodeId: node.id,
           });
 
           if (imageNode) assetIds.push(imageNode.id);
@@ -30,7 +35,7 @@ const onCreateNode = async (
         }
       });
 
-      await Promise.all(fetchImageAssets);
+      await Promise.all(processImageAssets);
 
       return assetIds;
     };
