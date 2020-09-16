@@ -4,11 +4,6 @@ const sourceNodes = async (
   { actions, createContentDigest, reporter },
   { publicKey }
 ) => {
-  if (!publicKey)
-    return reporter.panicOnBuild(
-      `@chec/gatsby-source-chec: You must provide a 'publicKey' for your Chec store`
-    );
-
   const { createNode } = actions;
 
   const commerce = new Chec(publicKey);

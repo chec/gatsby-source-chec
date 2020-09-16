@@ -1,9 +1,33 @@
 import React from 'react';
-import { graphql, useStaticQuery, Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import ProductList from '../components/ProductList';
 
-const pageQuery = graphql`
+export default function IndexPage({
+  data: { merchant, products, categories },
+}) {
+  return (
+    <React.Fragment>
+      <h1>{merchant.name}</h1>
+
+      <h3>Categories</h3>
+
+      <ul>
+        {categories.nodes.map(({ name, slug }) => (
+          <li key={slug}>
+            <Link to={`/categories/${slug}`}>{name}</Link>
+          </li>
+        ))}
+      </ul>
+
+      <h3>Products</h3>
+
+      <ProductList products={products.nodes} />
+    </React.Fragment>
+  );
+}
+
+export const pageQuery = graphql`
   {
     merchant: checMerchant {
       name: business_name
@@ -27,29 +51,3 @@ const pageQuery = graphql`
     }
   }
 `;
-
-const IndexPage = () => {
-  const { merchant, products, categories } = useStaticQuery(pageQuery);
-
-  return (
-    <React.Fragment>
-      <h1>{merchant.name}</h1>
-
-      <h3>Categories</h3>
-
-      <ul>
-        {categories.nodes.map(({ name, slug }) => (
-          <li key={slug}>
-            <Link to={`/categories/${slug}`}>{name}</Link>
-          </li>
-        ))}
-      </ul>
-
-      <h3>Products</h3>
-
-      <ProductList products={products.nodes} />
-    </React.Fragment>
-  );
-};
-
-export default IndexPage;
