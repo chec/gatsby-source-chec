@@ -8,6 +8,8 @@ const onCreateNode = async (
 ) => {
   const { downloadImageAssets } = withPluginOptions(pluginOptions);
 
+  node.images = [];
+
   if (
     downloadImageAssets &&
     node.internal.type === 'ChecProduct' &&
