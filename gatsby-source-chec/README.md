@@ -53,3 +53,11 @@ plugins: [
   }
 }
 ```
+
+## Downloading image assets
+
+This plugin provides you the option to download product asset images, and cache them in your Gatsby project. This works great with [`gatsby-image`](https://www.gatsbyjs.org/packages/gatsby-image).
+
+Add `downloadImageAssets: true` to your plugin options.
+
+These assets will be added as `images` to the `ChecProduct` nodes.
