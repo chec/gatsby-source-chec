@@ -21,7 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "chec-request": "1.0.1",
+    "chec-request": "1.0.2",
     "gatsby-source-filesystem": "2.3.30"
   }
 }
