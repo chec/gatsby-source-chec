@@ -3637,10 +3637,10 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-chec-request@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/chec-request/-/chec-request-1.0.2.tgz#6d4212e35e7efd6f922434e79de0cc376d65e5c4"
-  integrity sha512-FebAKGnCXLwsOYLnmW+H7gzwLF/U4omfBjvwYqMNawSHE4kwvmE5dh9XqAXsGgfSbmrzZwxrsOwCwwJq27Xq5w==
+chec-request@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/chec-request/-/chec-request-1.2.0.tgz#94340c93ac3ddcba4ec7a32f371f4a8a650bebae"
+  integrity sha512-gRRlvGrwc+a7Ue/W4tDgH+d62Z9sfNiyj2P6MiCkoBZbc2qZVtazqiUl+HINgknIg8LG5p0+8AtNfWhIQnlGLA==
   dependencies:
     cross-fetch "3.0.6"
 
