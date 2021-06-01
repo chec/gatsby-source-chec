@@ -8,7 +8,7 @@
     "dev": "gatsby develop"
   },
   "devDependencies": {
-    "dotenv": "9.0.2"
+    "dotenv": "10.0.0"
   },
   "dependencies": {
     "@chec/gatsby-source-chec": "*",
