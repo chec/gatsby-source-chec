@@ -4,11 +4,17 @@ import { graphql, Link } from 'gatsby';
 import ProductList from '../components/ProductList';
 
 export default function IndexPage({
-  data: { merchant, products, categories },
+  data: { merchants, products, categories },
 }) {
   return (
     <React.Fragment>
-      <h1>{merchant.name}</h1>
+      <h1>Merchants</h1>
+
+      <ul>
+        {merchants.nodes.map(({ name }) => (
+          <li key={name}>{name}</li>
+        ))}
+      </ul>
 
       <h3>Categories</h3>
 
@@ -29,8 +35,10 @@ export default function IndexPage({
 
 export const pageQuery = graphql`
   {
-    merchant: checMerchant {
-      name: business_name
+    merchants: allChecMerchant {
+      nodes {
+        name: business_name
+      }
     }
 
     categories: allChecCategory {

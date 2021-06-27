@@ -1,9 +1,7 @@
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const {
-    data: { products, categories },
-  } = await graphql(`
+  const { data } = await graphql(`
     {
       products: allChecProduct {
         nodes {
@@ -21,7 +19,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  products.nodes.forEach(({ id, permalink }) =>
+  data?.products.nodes.forEach(({ id, permalink }) =>
     createPage({
       path: `/products/${permalink}`,
       component: require.resolve(`./src/templates/ProductPage.js`),
@@ -31,7 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   );
 
-  categories.nodes.forEach(({ id, slug }) =>
+  data?.categories.nodes.forEach(({ id, slug }) =>
     createPage({
       path: `/categories/${slug}`,
       component: require.resolve(`./src/templates/CategoryPage.js`),
