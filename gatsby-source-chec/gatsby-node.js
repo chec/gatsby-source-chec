@@ -66,7 +66,7 @@ exports.sourceNodes = async (
 
   let merchants = [];
 
-  if (merchant?.id) {
+  if (merchant && merchant.id) {
     merchants = [merchant];
   } else {
     merchants = await fetchAllPages('merchants');
