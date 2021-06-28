@@ -51,19 +51,31 @@ exports.sourceNodes = async (
     }
   };
 
-  const { id: merchantId, ...merchant } = await commerce.get('merchants');
+  const createMerchant = (merchant) =>
+    createNode({
+      ...merchant,
+      id: merchant.id.toString(),
+      internal: {
+        type: `ChecMerchant`,
+        content: JSON.stringify(merchant),
+        contentDigest: createContentDigest(merchant),
+      },
+    });
+
+  const merchant = await commerce.get('merchants');
+
+  let merchants = [];
+
+  if (merchant && merchant.id) {
+    merchants = [merchant];
+  } else {
+    merchants = await fetchAllPages('merchants');
+  }
+
   const categories = await fetchAllPages('categories');
   const products = await fetchAllPages('products');
 
-  createNode({
-    id: merchantId.toString(),
-    ...merchant,
-    internal: {
-      type: `ChecMerchant`,
-      content: JSON.stringify(merchant),
-      contentDigest: createContentDigest(merchant),
-    },
-  });
+  merchants.forEach(createMerchant);
 
   categories.forEach((category) => {
     const productIds = products.reduce((ids, product) => {
