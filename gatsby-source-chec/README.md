@@ -1,6 +1,7 @@
 # @chec/gatsby-source-chec
 
-🛍 Gatsby plugin for sourcing products, categories and merchant info from your Chec store
+🛍 Gatsby plugin for sourcing products, categories and merchant info from your Chec store.
+
 
 ## Install
 
@@ -56,8 +57,24 @@ plugins: [
 
 ## Downloading image assets
 
-This plugin provides you the option to download product asset images, and cache them in your Gatsby project. This works great with [`gatsby-image`](https://www.gatsbyjs.org/packages/gatsby-image).
+This plugin provides you the option to download product asset images, and cache them in your Gatsby project. This works great with [`gatsby-plugin-image`](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/).
 
 Add `downloadImageAssets: true` to your plugin options.
 
-These assets will be added as `images` to the `ChecProduct` nodes.
+These assets will be added as `images` to the `product` nodes.
+
+
+```graphql
+  product: checProduct(id: { eq: $id }) {
+    id
+    name
+    price {
+      formatted_with_symbol
+    }
+    images {
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
+  }
+```
