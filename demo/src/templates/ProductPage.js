@@ -8,9 +8,7 @@ export default function ProductPage({ data: { product } }) {
 
   return (
     <React.Fragment>
-     {mainImage && (
-      <GatsbyImage image={getImage(mainImage)} alt={name}/>
-      )} }
+      {mainImage && <GatsbyImage image={getImage(mainImage)} alt={name} />}
       <h1>{name}</h1>
       <p>{price.formatted_with_symbol}</p>
     </React.Fragment>

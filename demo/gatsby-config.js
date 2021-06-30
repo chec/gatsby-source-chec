@@ -13,5 +13,6 @@ module.exports = {
       },
     },
     'gatsby-transformer-sharp',
+    'gatsby-plugin-image',
   ],
 };
