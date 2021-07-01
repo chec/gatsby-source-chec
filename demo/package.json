@@ -13,7 +13,7 @@
   "dependencies": {
     "@chec/gatsby-source-chec": "*",
     "gatsby": "3.8.1",
-    "gatsby-plugin-image": "^1.8.0",
+    "gatsby-plugin-image": "1.8.0",
     "gatsby-plugin-sharp": "3.8.0",
     "gatsby-transformer-sharp": "3.8.0",
     "react": "17.0.2",
